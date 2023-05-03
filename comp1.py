@@ -1,40 +1,40 @@
 from ListaNos import ListaNos
 from HuffmanTree import HuffmanTree
 
-##############################################
-def openFile(file_name):	# pega o texto incial
-		try:
-			file = open(file_name, "r")
-			text = file.read()
-			file.close()
-		except IOError:
-			print ("Erro ao abrir o arquivo")
-		return text
+def read_file(file_name):
+    """Reads the initial text from a file."""
+    try:
+        with open(file_name, "r") as file:
+            text = file.read()
+    except IOError:
+        print("Erro ao abrir o arquivo")
+    return text
 
-def creatFile(file_name, text):		# escreve um arquivo com o texto em binário
-	try:
-		file = open(file_name, 'w')
-		file.write(text)
-		file.close()
-	except IOError:
-		raise print("Erro ao criar o arquivo")
+def write_file(file_name, binary_data):
+    """Writes binary data to a file."""
+    try:
+        with open(file_name, "wb") as file:
+            file.write(binary_data)
+    except IOError:
+        print("Erro ao criar o arquivo")
 
+# Main function
+if __name__ == "__main__":
+    # Read input text from a file
+    input_text = read_file("abra.txt")
+    input_chars = list(input_text)
 
-##############################################
+    # Create a Huffman tree and a list of nodes
+    huffman_tree = HuffmanTree()
+    node_list = ListaNos(input_chars)
+    node_list.create_tree()
+    huffman_tree.encode(node_list.root)
 
-########## Main ##############
+    # Write the result to a file
+    result_binary = huffman_tree.tree_to_binary(node_list.root) + huffman_tree.encode_text(node_list.root, input_text)
+    write_file("result.txt", result_binary)
 
-lista = list(openFile("abra.txt"))
-ht = HuffmanTree()
-listaNos = ListaNos(lista)
-listaNos.criaArv()
-ht.codifica(listaNos.raiz[0])
-#ht.navegar(listaNos.raiz[0])
-
-creatFile("result.txt",ht.arvToBin(listaNos.raiz[0])+'\n'+ht.getTextBin(listaNos.raiz[0],listaNos.texto))
-
-print("Arvore  pre-ordem  "+ht.arvToBin(listaNos.raiz[0]))
-
-print(ht.getTextBin(listaNos.raiz[0],listaNos.texto))
-
-print(ht.decodeBin(listaNos.raiz[0],ht.getTextBin(listaNos.raiz[0],listaNos.texto)))
+    # Print the result
+    print("Arvore pre-ordem: " + huffman_tree.tree_to_binary(node_list.root))
+    print(huffman_tree.encode_text(node_list.root, input_text))
+    print(huffman_tree.decode_text(node_list.root, huffman_tree.encode_text(node_list.root, input_text)))
