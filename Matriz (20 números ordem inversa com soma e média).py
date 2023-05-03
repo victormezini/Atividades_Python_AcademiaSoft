@@ -3,9 +3,14 @@ print()
 
 l = []
 
-for v in range(5):
+for v in range(20):
     n = int(input('Digite um número inteiro: '))
     l.append(n)
 
 l.reverse()
-print(l)
+
+soma = sum(l)
+media = soma / len(l)
+
+print('Números ------------- Soma -------------- Média')
+print('{} -------------- {} -------------- {}'.format(l, soma, media))
