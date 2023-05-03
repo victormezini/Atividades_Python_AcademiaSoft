@@ -1,15 +1,12 @@
 class No:
-	conteudo = 0
-	bin = ""
-	def __init__(self, conteudo, freq, bin, left, right):
-		self.conteudo = conteudo
-		self.freq = freq
-		self.bin = bin
-		self.left = left
-		self.right = right
+    def __init__(self, conteudo, freq, left, right):
+        self.conteudo = conteudo
+        self.freq = freq
+        self.left = left
+        self.right = right
 
-	def __repr__(self):
-		return repr((self.conteudo, self.freq, self.bin))
+    def __repr__(self):
+        return f"{self.conteudo} ({self.freq})"
 
-	def isLeaf(self):
-		return self.left is None and self.right is None
+    def is_leaf(self):
+        return self.left is None and self.right is None
