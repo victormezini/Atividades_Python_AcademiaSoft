@@ -1,7 +1,9 @@
-print('\033[7mArea de um circulo\033[m')
+import math
 
-raio= int(input('Digite a raio do Circulo:  '))
+print('\033[7mÁrea de um círculo\033[m')
 
-area= raio*raio*3.14
+raio = float(input('Digite o raio do círculo: '))
 
-print ('A área do circulo é:' ,raio*raio*3.14 )
+area = math.pi * raio ** 2
+
+print('A área do círculo é:', area)
