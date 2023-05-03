@@ -5,5 +5,5 @@ l = []
 for v in range(3):
     n = int(input('Digite um número inteiro: '))
     l.append(n)
-    l.sort()
+l.sort()
 print(l)
