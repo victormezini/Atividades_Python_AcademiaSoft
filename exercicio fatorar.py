@@ -1,8 +1,7 @@
 print('\033[7m Exercicio de fatoração \033[m')
 
-numero = int(input('Digite um numero: '))
+numero = int(input('Digite um número: '))
 
-for numero in range(0, numero+1, 1):
-    fator = numero * numero -1
-
-    print(fator)
+for i in range(1, numero+1):
+    fator = i * (i - 1)
+    print(f'{i} x {i-1} = {fator}')
