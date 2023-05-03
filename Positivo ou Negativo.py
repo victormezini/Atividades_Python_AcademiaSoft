@@ -1,7 +1,8 @@
 print('\033[7mPositivo ou Negativo\033[m')
 
-n = int(input('digite um numero: '))
-if n>=0:
-  print('positivo')
+n = int(input('Digite um número: '))
+
+if n >= 0:
+    print('O número é positivo')
 else:
-  print('negativo')
+    print('O número é negativo')
