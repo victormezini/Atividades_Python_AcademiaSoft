@@ -3,33 +3,27 @@ b_pixel = 4
 
 dict = {}
 
-
-
 temp = ""
 comprimido = ""
-flag = False
 count = 0
 countdict = 1
+
 try:
-    for e in range(len(string)):
-        flag = False
-        for i in range(b_pixel):
-            temp += string[count]
-            count += 1
-        print(temp)
-        for num in dict:
-            if dict[num] == temp:
-                comprimido += str(num) + "#"
-                flag = True
-        if not flag:
+    while count < len(string):
+        temp = string[count:count+b_pixel]
+        count += b_pixel
+        if temp in dict.values():
+            for num, value in dict.items():
+                if value == temp:
+                    comprimido += str(num) + "#"
+                    break
+        else:
             dict[countdict] = temp
             comprimido += str(countdict) + "#"
             countdict += 1
 
-        temp = ""
-
 except IndexError:
-    print("Indexerror")
+    print("IndexError")
 
 print(dict)
 print(comprimido)
