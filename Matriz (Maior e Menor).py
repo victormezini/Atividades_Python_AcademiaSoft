@@ -3,17 +3,12 @@ print()
 
 l = []
 for v in range(5):
-    n = int(input('Digite um número inteiro:'))
+    n = int(input('Digite um número inteiro: '))
     l.append(n)
 
-l.sort()
+maior = max(l)
+menor = min(l)
 
 print(l)
-
-print()
-
-print('O maior número digitado é: ', l[4])
-
-print()
-
-print('O menor número digitado foi: ', l[0])
+print(f'\nO maior número digitado é: {maior}')
+print(f'O menor número digitado é: {menor}')
